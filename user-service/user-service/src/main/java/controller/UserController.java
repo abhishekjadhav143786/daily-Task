@@ -3,17 +3,15 @@ package controller;
 import entity.User;
 import service.UserService;
 import org.springframework.web.bind.annotation.*;
+import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 @RestController
 @RequestMapping("/users")
+@RequiredArgsConstructor // Automatically injects UserService
 public class UserController {
 
     private final UserService service;
-
-    public UserController(UserService service) {
-        this.service = service;
-    }
 
     @PostMapping
     public User createUser(@RequestBody User user) {

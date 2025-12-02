@@ -3,16 +3,14 @@ package service;
 import entity.User;
 import repository.UserRepository;
 import org.springframework.stereotype.Service;
+import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor // Automatically injects UserRepository
 public class UserService {
 
     private final UserRepository repository;
-
-    public UserService(UserRepository repository) {
-        this.repository = repository;
-    }
 
     public User saveUser(User user) {
         return repository.save(user);

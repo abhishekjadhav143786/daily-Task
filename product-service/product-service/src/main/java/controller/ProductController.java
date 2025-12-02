@@ -3,17 +3,15 @@ package controller;
 import entity.Product;
 import service.ProductService;
 import org.springframework.web.bind.annotation.*;
+import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 @RestController
 @RequestMapping("/products")
+@RequiredArgsConstructor // Automatically creates the constructor for 'service'
 public class ProductController {
 
     private final ProductService service;
-
-    public ProductController(ProductService service) {
-        this.service = service;
-    }
 
     @PostMapping
     public Product createProduct(@RequestBody Product product) {
@@ -30,3 +28,4 @@ public class ProductController {
         return service.getProductById(id);
     }
 }
+

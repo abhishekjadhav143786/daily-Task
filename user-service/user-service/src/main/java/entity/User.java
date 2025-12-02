@@ -1,9 +1,15 @@
 package entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Entity
-@Table(name = "users") // 'user' is a reserved SQL keyword, so we use 'users'
+@Table(name = "users") // 'users' avoids conflict with SQL keyword 'user'
+@Data               // Generates Getters, Setters, toString, etc.
+@NoArgsConstructor  // Generates empty constructor
+@AllArgsConstructor // Generates constructor with all fields
 public class User {
 
     @Id
@@ -13,22 +19,4 @@ public class User {
     private String name;
     private String email;
     private String address;
-
-    public User() {}
-
-    public User(String name, String email, String address) {
-        this.name = name;
-        this.email = email;
-        this.address = address;
-    }
-
-    // Getters and Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
-    public String getAddress() { return address; }
-    public void setAddress(String address) { this.address = address; }
 }
