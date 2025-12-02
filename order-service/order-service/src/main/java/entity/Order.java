@@ -1,9 +1,13 @@
 package entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "orders")
+@Data
+@NoArgsConstructor
 public class Order {
 
     @Id
@@ -15,29 +19,8 @@ public class Order {
     private Integer quantity;
     private Double totalPrice;
 
-    // Only for storing fetched details (not a relation)
+    // Snapshot details
     private String productName;
     private String userName;
-
-    // Getters and Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
-    public Long getProductId() { return productId; }
-    public void setProductId(Long productId) { this.productId = productId; }
-
-    public Long getUserId() { return userId; }
-    public void setUserId(Long userId) { this.userId = userId; }
-
-    public Integer getQuantity() { return quantity; }
-    public void setQuantity(Integer quantity) { this.quantity = quantity; }
-
-    public Double getTotalPrice() { return totalPrice; }
-    public void setTotalPrice(Double totalPrice) { this.totalPrice = totalPrice; }
-
-    public String getProductName() { return productName; }
-    public void setProductName(String productName) { this.productName = productName; }
-
-    public String getUserName() { return userName; }
-    public void setUserName(String userName) { this.userName = userName; }
 }
+

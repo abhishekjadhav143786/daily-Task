@@ -7,38 +7,33 @@ import dto.UserDTO;
 import entity.Order;
 import repository.OrderRepository;
 import org.springframework.stereotype.Service;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor // Injects Repository and Clients automatically
 public class OrderService {
 
     private final OrderRepository repository;
-    private final ProductClient productClient; // Feign
-    private final UserClient userClient;       // Feign
-
-    public OrderService(OrderRepository repository, ProductClient productClient, UserClient userClient) {
-        this.repository = repository;
-        this.productClient = productClient;
-        this.userClient = userClient;
-    }
+    private final ProductClient productClient;
+    private final UserClient userClient;
 
     public Order placeOrder(Long userId, Long productId, Integer quantity) {
-        // 1. Call User Service using Feign
+        // 1. Fetch User
         UserDTO user = userClient.getUserById(userId);
 
-        // 2. Call Product Service using Feign
+        // 2. Fetch Product
         ProductDTO product = productClient.getProductById(productId);
 
-        // 3. Create Order
+        // 3. Create & Save Order
         Order order = new Order();
         order.setUserId(user.getId());
-        order.setUserName(user.getName()); // Proves we talked to User Service
-
+        order.setUserName(user.getName());
         order.setProductId(product.getId());
-        order.setProductName(product.getName()); // Proves we talked to Product Service
-
+        order.setProductName(product.getName());
         order.setQuantity(quantity);
         order.setTotalPrice(product.getPrice() * quantity);
 
         return repository.save(order);
     }
 }
+
