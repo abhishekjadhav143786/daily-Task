@@ -24,4 +24,17 @@ public class UserService {
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
     }
+
+    public User updateUser(Long id, User user) {
+        User existingUser = getUserById(id);
+        existingUser.setName(user.getName());
+        existingUser.setEmail(user.getEmail());
+        return repository.save(existingUser);
+    }
+
+    public void deleteUser(Long id) {
+        repository.deleteById(id);
+    }
+
+
 }

@@ -24,5 +24,19 @@ public class ProductService {
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
     }
+
+    public Product updateProduct(Long id, Product product) {
+        Product existingProduct = getProductById(id);
+        existingProduct.setName(product.getName());
+        existingProduct.setPrice(product.getPrice());
+        return repository.save(existingProduct);
+    }
+
+    public void deleteProduct(Long id) {
+        repository.deleteById(id);
+    }
+
 }
+
+
 
