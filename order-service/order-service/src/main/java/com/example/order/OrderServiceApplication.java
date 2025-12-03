@@ -2,10 +2,10 @@ package com.example.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.openfeign.EnableFeignClients; // <--- This import was missing
 
 @SpringBootApplication
-@EnableFeignClients(basePackages = "client")
+@EnableFeignClients // <--- THIS WAS THE MISSING KEY!
 public class OrderServiceApplication {
 
     public static void main(String[] args) {

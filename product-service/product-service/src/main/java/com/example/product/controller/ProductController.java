@@ -1,7 +1,7 @@
-package controller;
+package com.example.product.controller;
 
-import entity.Product;
-import service.ProductService;
+import com.example.product.entity.Product;
+import com.example.product.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 import lombok.RequiredArgsConstructor;
 import java.util.List;

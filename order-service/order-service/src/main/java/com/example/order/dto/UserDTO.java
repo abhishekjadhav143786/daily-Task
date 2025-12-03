@@ -1,11 +1,10 @@
-package dto;
+package com.example.order.dto;
 
 import lombok.Data;
 
 @Data // Generates Getters, Setters, etc.
-public class ProductDTO {
+public class UserDTO {
     private Long id;
     private String name;
-    private Double price;
+    private String email;
 }
-
