@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients; // <--- This import was missing
 
 @SpringBootApplication
-@EnableFeignClients // <--- THIS WAS THE MISSING KEY!
+@EnableFeignClients //
 public class OrderServiceApplication {
 
     public static void main(String[] args) {
