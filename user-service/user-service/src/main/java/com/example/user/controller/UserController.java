@@ -2,13 +2,13 @@ package com.example.user.controller;
 
 import com.example.user.entity.User;
 import com.example.user.service.UserService;
-import org.springframework.web.bind.annotation.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
 @RequestMapping("/users")
-@RequiredArgsConstructor // Automatically injects UserService
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserService service;
@@ -38,3 +38,4 @@ public class UserController {
         service.deleteUser(id);
     }
 }
+

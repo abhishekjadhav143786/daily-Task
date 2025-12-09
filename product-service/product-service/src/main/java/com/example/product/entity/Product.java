@@ -10,14 +10,14 @@ import lombok.AllArgsConstructor;
 @Data               // Generates all Getters, Setters, toString, etc.
 @NoArgsConstructor  // Generates empty constructor
 @AllArgsConstructor // Generates constructor with all fields
-public class Product {
 
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private Double price;
     private String description;
 }
+
 
