@@ -23,8 +23,8 @@ public class Order {
     private Integer quantity;
     private Double totalPrice;
 
-    // Snapshot details
     private String productName;
     private String userName;
 }
+
 

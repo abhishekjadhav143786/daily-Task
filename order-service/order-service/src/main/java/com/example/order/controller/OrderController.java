@@ -14,7 +14,6 @@ public class OrderController {
 
     private final OrderService service;
 
-    // Static DTO for Request Body
     @Data
     static class OrderRequest {
         public Long userId;
