@@ -13,23 +13,24 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional
+
 public class OrderService {
 
     private final OrderRepository repository;
     private final ProductClient productClient;
     private final UserClient userClient;
 
-    // Helper method to keep code DRY (Don't Repeat Yourself) and prevent price bugs
-    private void updateOrderDetails(Order order, Long userId, Long productId, Integer quantity) {
-        var user = userClient.getUserById(userId);
-        var product = productClient.getProductById(productId);
-        order.setUserId(user.getId());
-        order.setUserName(user.getName());
-        order.setProductId(product.getId());
-        order.setProductName(product.getName());
-        order.setQuantity(quantity);
-        order.setTotalPrice(product.getPrice() * quantity); // Auto-calculate price
-    }
+
+    private void updateOrderDetails(Order order, Long userId, Long productId, Integer quantity){
+            var user = userClient.getUserById(userId);
+            var product = productClient.getProductById(productId);
+            order.setUserId(user.getId());
+            order.setUserName(user.getName());
+            order.setProductId(product.getId());
+            order.setProductName(product.getName());
+            order.setQuantity(quantity);
+            order.setTotalPrice(product.getPrice() * quantity); // Auto-calculate price
+        }
 
     public Order placeOrder(Long userId, Long productId, Integer quantity) {
         Order order = new Order();

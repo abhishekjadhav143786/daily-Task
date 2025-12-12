@@ -9,7 +9,7 @@ import lombok.AllArgsConstructor;
 @Table(name = "users") // 'users' avoids conflict with SQL keyword 'user'
 @Data               // Generates Getters, Setters, toString, etc.
 @NoArgsConstructor  // Generates empty constructor
-@AllArgsConstructor // Generates constructor with all fields
+ @AllArgsConstructor// Generates constructor with all fields
 public class User {
 
     @Id
